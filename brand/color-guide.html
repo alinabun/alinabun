@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alina Bun — Color Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:      #F4EEE1;
+    --glaze:      #D9C1A0;
+    --crust:      #BD8145;
+    --crumb:      #8C6A4B;
+    --roast:      #3B2417;
+    --white:      #FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--roast);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:56px 28px 80px;}
+
+  header{margin-bottom:56px;}
+  header .eyebrow{
+    font-size:13px;
+    color:var(--crumb);
+    letter-spacing:0.02em;
+    margin:0 0 10px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(34px,5vw,52px);
+    margin:0 0 14px;
+    color:var(--roast);
+  }
+  header p{
+    max-width:560px;
+    color:var(--crumb);
+    font-size:16px;
+    margin:0;
+  }
+
+  h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:24px;
+    margin:0 0 6px;
+    color:var(--roast);
+  }
+  .section-sub{color:var(--crumb);font-size:14.5px;margin:0 0 24px;}
+  section{margin-bottom:64px;}
+
+  /* Palette grid */
+  .palette{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:18px;
+  }
+  .swatch{
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--white);
+    border:1px solid rgba(59,36,23,0.08);
+    cursor:pointer;
+    transition:transform .15s ease;
+    position:relative;
+  }
+  .swatch:hover{transform:translateY(-2px);}
+  .swatch .block{height:104px;}
+  .swatch .info{padding:14px 14px 16px;}
+  .swatch .role{
+    font-size:10.5px;
+    letter-spacing:.04em;
+    color:var(--crumb);
+    margin:0 0 4px;
+  }
+  .swatch .name{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:17px;
+    margin:0 0 6px;
+  }
+  .swatch .hex{
+    font-family:ui-monospace,'SF Mono',Consolas,monospace;
+    font-size:13px;
+    color:var(--crumb);
+    margin:0;
+  }
+  .copied-tag{
+    position:absolute;
+    top:10px;right:10px;
+    background:var(--roast);
+    color:var(--cream);
+    font-size:11px;
+    padding:3px 8px;
+    border-radius:20px;
+    opacity:0;
+    transition:opacity .15s ease;
+    pointer-events:none;
+  }
+  .copied-tag.show{opacity:1;}
+
+  /* Pairing table */
+  .pairs{display:flex;flex-direction:column;gap:10px;}
+  .pair-row{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    align-items:center;
+    gap:16px;
+    background:var(--white);
+    border:1px solid rgba(59,36,23,0.08);
+    border-radius:12px;
+    padding:14px 18px;
+  }
+  .pair-demo{
+    border-radius:8px;
+    padding:14px 10px;
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    font-weight:500;
+  }
+  .pair-verdict{font-size:13px;color:var(--crumb);white-space:nowrap;}
+  .pair-verdict b{color:var(--roast);}
+
+  /* Preview */
+  .preview{
+    background:var(--roast);
+    border-radius:20px;
+    padding:48px 40px;
+    color:var(--cream);
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .preview .copy{max-width:320px;}
+  .preview h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:28px;
+    margin:0 0 10px;
+    color:var(--cream);
+  }
+  .preview p{margin:0 0 20px;color:var(--glaze);font-size:14.5px;}
+  .btn{
+    display:inline-block;
+    background:var(--crust);
+    color:var(--white);
+    font-weight:600;
+    font-size:14.5px;
+    padding:12px 22px;
+    border-radius:9px;
+    text-decoration:none;
+  }
+  .btn-secondary{
+    display:inline-block;
+    background:transparent;
+    border:1.5px solid var(--glaze);
+    color:var(--cream);
+    font-weight:500;
+    font-size:14.5px;
+    padding:10.5px 20px;
+    border-radius:9px;
+    margin-left:10px;
+  }
+  .price-card{
+    background:var(--cream);
+    color:var(--roast);
+    border-radius:14px;
+    padding:20px 24px;
+    min-width:200px;
+  }
+  .price-card .tag{
+    display:inline-block;
+    background:var(--crust);
+    color:var(--white);
+    font-size:11px;
+    font-weight:600;
+    padding:3px 9px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .price-card .item{font-family:'Fraunces',serif;font-size:19px;margin:0 0 2px;}
+  .price-card .price{color:var(--crumb);font-size:14px;margin:0;}
+
+  footer{
+    margin-top:8px;
+    color:var(--crumb);
+    font-size:13px;
+  }
+  @media (max-width:560px){
+    .pair-row{grid-template-columns:1fr;text-align:center;}
+    .preview{padding:36px 24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Alina Bun — brand color guide</p>
+    <h1>The bakery board,<br>turned into a palette.</h1>
+    <p>Pulled from the reference screenshots your wife shared — warm caramel and toasted tan tones on a soft cream base. Click any swatch to copy its hex code.</p>
+  </header>
+
+  <section>
+    <h2>Core palette</h2>
+    <p class="section-sub">Five colors, each with a job. Use them in roughly this proportion: mostly cream, crust as the one accent, roast for text.</p>
+    <div class="palette" id="palette">
+      <div class="swatch" data-hex="#F4EEE1">
+        <div class="block" style="background:#F4EEE1"></div>
+        <div class="info">
+          <p class="role">BACKGROUND</p>
+          <p class="name">Milk Bun</p>
+          <p class="hex">#F4EEE1</p>
+        </div>
+        <span class="copied-tag">Copied</span>
+      </div>
+      <div class="swatch" data-hex="#D9C1A0">
+        <div class="block" style="background:#D9C1A0"></div>
+        <div class="info">
+          <p class="role">SURFACE / CARDS</p>
+          <p class="name">Warm Glaze</p>
+          <p class="hex">#D9C1A0</p>
+        </div>
+        <span class="copied-tag">Copied</span>
+      </div>
+      <div class="swatch" data-hex="#BD8145">
+        <div class="block" style="background:#BD8145"></div>
+        <div class="info">
+          <p class="role">PRIMARY / CTA</p>
+          <p class="name">Golden Crust</p>
+          <p class="hex">#BD8145</p>
+        </div>
+        <span class="copied-tag">Copied</span>
+      </div>
+      <div class="swatch" data-hex="#8C6A4B">
+        <div class="block" style="background:#8C6A4B"></div>
+        <div class="info">
+          <p class="role">SECONDARY</p>
+          <p class="name">Toasted Crumb</p>
+          <p class="hex">#8C6A4B</p>
+        </div>
+        <span class="copied-tag">Copied</span>
+      </div>
+      <div class="swatch" data-hex="#3B2417">
+        <div class="block" style="background:#3B2417"></div>
+        <div class="info">
+          <p class="role">TEXT / DARK</p>
+          <p class="name">Dark Roast</p>
+          <p class="hex">#3B2417</p>
+        </div>
+        <span class="copied-tag">Copied</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Text &amp; background pairings</h2>
+    <p class="section-sub">Checked against WCAG contrast so body copy stays readable — not just decorative.</p>
+    <div class="pairs">
+      <div class="pair-row">
+        <div class="pair-demo" style="background:#F4EEE1;color:#3B2417;">Dark Roast on Milk Bun</div>
+        <div class="pair-demo" style="background:#3B2417;color:#F4EEE1;">Milk Bun on Dark Roast</div>
+        <div class="pair-verdict"><b>12.5:1</b> — safe for body text</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-demo" style="background:#8C6A4B;color:#FFFFFF;">White on Toasted Crumb</div>
+        <div class="pair-demo" style="background:#D9C1A0;color:#3B2417;">Dark Roast on Warm Glaze</div>
+        <div class="pair-verdict"><b>4.9:1 / 8.3:1</b> — safe for body text</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-demo" style="background:#BD8145;color:#FFFFFF;font-weight:700;">White on Golden Crust</div>
+        <div class="pair-demo" style="background:#D9C1A0;color:#BD8145;">Golden Crust on Warm Glaze</div>
+        <div class="pair-verdict"><b>3.3:1</b> — buttons/headings only, not small body text</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>In context</h2>
+    <p class="section-sub">A rough preview of the palette doing its job on a product section.</p>
+    <div class="preview">
+      <div class="copy">
+        <h3>Fresh buns, baked to order</h3>
+        <p>Tuna, cream, chocolate, sausage &amp; blend — pre-order before 8pm for next-day pickup.</p>
+        <a class="btn" href="#">Order on Telegram</a>
+        <a class="btn-secondary" href="#">See the menu</a>
+      </div>
+      <div class="price-card">
+        <span class="tag">Bestseller</span>
+        <p class="item">Cream Bun</p>
+        <p class="price">$1.80 · box of 6</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Extracted from 5 reference boards · click a swatch to copy its hex.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.swatch').forEach(function(el){
+    el.addEventListener('click', function(){
+      var hex = el.getAttribute('data-hex');
+      var tag = el.querySelector('.copied-tag');
+      var fallback = function(){
+        var ta = document.createElement('textarea');
+        ta.value = hex;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); }catch(e){}
+        document.body.removeChild(ta);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(hex).catch(fallback);
+      } else {
+        fallback();
+      }
+      tag.classList.add('show');
+      setTimeout(function(){ tag.classList.remove('show'); }, 900);
+    });
+  });
+</script>
+</body>
+</html>

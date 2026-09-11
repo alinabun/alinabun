@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alina Bun — Fresh buns, baked to order</title>
+<meta name="description" content="A small home bakery making tuna, cream, chocolate and sausage buns fresh to order. This is the story behind Alina Bun.">
+<meta name="theme-color" content="#F4EEE1">
+<link rel="canonical" href="https://alinabun.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alina Bun">
+<meta property="og:description" content="Fresh buns, baked to order.">
+<meta property="og:url" content="https://alinabun.com/">
+<meta property="og:image" content="https://alinabun.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="brand/tokens.css">
+<style>
+/* Fallback copy of brand/tokens.css. Keeps the page on-brand even if the
+   external stylesheet fails to load. Mirrors brand/tokens.css — if you
+   change a value there, change it here too. */
+:root{
+  --milk-bun:#F4EEE1; --warm-glaze:#D9C1A0; --golden-crust:#BD8145;
+  --toasted-crumb:#8C6A4B; --dark-roast:#3B2417; --white:#FFFFFF;
+  --bg:var(--milk-bun); --bg-inverse:var(--dark-roast);
+  --text:var(--dark-roast); --text-muted:var(--toasted-crumb);
+  --text-inverse:var(--milk-bun); --accent:var(--golden-crust);
+  --border:rgba(59,36,23,.08); --border-strong:rgba(59,36,23,.16);
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --radius-sm:9px; --radius-md:14px; --radius-lg:20px; --radius-pill:999px;
+  --shadow-sm:0 1px 2px rgba(59,36,23,.06);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-body); line-height:1.65; font-size:16.5px;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--text)}
+
+/* ── Nav ────────────────────────────────────────────────────────── */
+nav{
+  position:sticky; top:0; z-index:10;
+  background:rgba(244,238,225,.88);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);
+}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+nav .brand{
+  font-family:var(--font-display); font-weight:600; font-size:19px;
+  text-decoration:none; letter-spacing:-.01em;
+}
+nav .nav-links{display:flex; gap:22px; align-items:center}
+nav .nav-links a{
+  font-size:14.5px; color:var(--text-muted); text-decoration:none; font-weight:500;
+}
+nav .nav-links a:hover{color:var(--text)}
+nav .nav-links a.cta{
+  background:var(--accent); color:var(--white);
+  padding:8px 15px; border-radius:var(--radius-sm); font-weight:600;
+}
+@media(max-width:520px){ nav .nav-links a.hide-sm{display:none} }
+
+/* ── Hero ───────────────────────────────────────────────────────── */
+.hero{
+  padding:88px 0 72px; text-align:center;
+  background-image:radial-gradient(ellipse 100% 70% at 50% 0%, rgba(217,193,160,.6), transparent 72%);
+}
+.hero .eyebrow{
+  font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--toasted-crumb); margin:0 0 18px; font-weight:600;
+}
+.hero h1{
+  font-family:var(--font-display); font-optical-sizing:auto; font-weight:600;
+  font-size:clamp(38px,7vw,62px); line-height:1.08; letter-spacing:-.02em;
+  margin:0 0 20px;
+}
+.hero .lede{
+  font-size:18.5px; color:var(--text-muted);
+  max-width:480px; margin:0 auto 34px;
+}
+.btn{
+  display:inline-block; background:var(--accent); color:var(--white);
+  font-weight:600; font-size:15.5px; padding:13px 26px;
+  border-radius:var(--radius-sm); text-decoration:none;
+  box-shadow:0 2px 12px rgba(189,129,69,.26);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(189,129,69,.32)}
+.btn-ghost{
+  display:inline-block; margin-left:10px; padding:12px 22px;
+  border:1.5px solid var(--border-strong); border-radius:var(--radius-sm);
+  color:var(--text); text-decoration:none; font-weight:500; font-size:15.5px;
+}
+.btn-ghost:hover{border-color:var(--toasted-crumb)}
+
+/* ── Sections ───────────────────────────────────────────────────── */
+section{padding:72px 0}
+section + section{border-top:1px solid var(--border)}
+h2{
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(26px,4vw,34px); letter-spacing:-.01em;
+  margin:0 0 16px;
+}
+section p{margin:0 0 18px; color:var(--text-muted)}
+section p.body{color:var(--text)}
+.story p{font-size:17px}
+.story p:first-of-type::first-letter{
+  font-family:var(--font-display); font-size:56px; font-weight:600;
+  float:left; line-height:.82; margin:6px 10px 0 0; color:var(--accent);
+}
+
+/* ── Menu grid ──────────────────────────────────────────────────── */
+.menu-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px; margin-top:28px;
+}
+.bun{
+  background:var(--white); border:1px solid var(--border);
+  border-radius:var(--radius-md); padding:20px;
+  box-shadow:var(--shadow-sm);
+}
+.bun .dot{
+  width:34px; height:34px; border-radius:var(--radius-pill);
+  margin-bottom:12px; border:1px solid var(--border);
+}
+.bun h3{font-family:var(--font-display); font-weight:500; font-size:18px; margin:0 0 4px}
+.bun p{font-size:13.5px; margin:0; color:var(--text-muted)}
+
+/* ── Closing CTA ────────────────────────────────────────────────── */
+.closing{
+  background:var(--bg-inverse); color:var(--text-inverse);
+  border-radius:var(--radius-lg); padding:52px 40px; text-align:center;
+  margin:0 0 72px;
+}
+.closing h2{color:var(--text-inverse); margin-bottom:12px}
+.closing p{color:var(--warm-glaze); max-width:420px; margin:0 auto 26px}
+
+footer{
+  border-top:1px solid var(--border);
+  padding:32px 0 48px; font-size:13.5px; color:var(--text-muted);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+footer a{color:var(--text-muted); text-decoration:none}
+footer a:hover{color:var(--text)}
+footer .social{display:flex; gap:18px}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/">Alina Bun</a>
+    <div class="nav-links">
+      <a class="hide-sm" href="#story">Story</a>
+      <a class="hide-sm" href="#menu">Buns</a>
+      <a class="cta" href="https://links.alinabun.com">Order</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Home bakery</p>
+    <h1>Fresh buns,<br>baked to order.</h1>
+    <p class="lede">Small batches, made the morning you get them. No shelf, no preservatives — just the oven and a short drive.</p>
+    <a class="btn" href="https://links.alinabun.com">Order a box</a>
+    <a class="btn-ghost" href="#menu">See the buns</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TODO: Replace the placeholder prose below with the real story.
+     Keep the structure — it's paced for a reader who just scanned
+     a QR code and has about 40 seconds of attention.
+     ═══════════════════════════════════════════════════════════════ -->
+
+<section class="story" id="story">
+  <div class="wrap">
+    <h2>How it started</h2>
+    <p>Every good bakery starts the same way — somebody made something for the people around them, and those people kept asking for more. That's the shape of this one too.</p>
+    <p><em>[Replace: where Alina learned to bake, what the first bun was, who asked for the second one.]</em></p>
+    <p><em>[Replace: the turn — the moment it stopped being a kitchen thing and started being a real thing worth naming.]</em></p>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>What comes out of the oven</h2>
+    <p>Five fillings, made in rotation. Not everything is available every day — the current list is always on the socials.</p>
+    <div class="menu-grid">
+      <div class="bun">
+        <div class="dot" style="background:#D9C1A0"></div>
+        <h3>Cream</h3><p>Soft, sweet, the bestseller.</p>
+      </div>
+      <div class="bun">
+        <div class="dot" style="background:#8C6A4B"></div>
+        <h3>Chocolate</h3><p>Rich centre, still warm if you're quick.</p>
+      </div>
+      <div class="bun">
+        <div class="dot" style="background:#BD8145"></div>
+        <h3>Tuna</h3><p>Savoury, seasoned, properly filled.</p>
+      </div>
+      <div class="bun">
+        <div class="dot" style="background:#3B2417"></div>
+        <h3>Sausage</h3><p>The one that disappears first at parties.</p>
+      </div>
+      <div class="bun">
+        <div class="dot" style="background:linear-gradient(135deg,#D9C1A0,#BD8145)"></div>
+        <h3>Blend</h3><p>A mixed box — a bit of everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How ordering works</h2>
+    <p class="body"><em>[Replace with the real process — e.g. "Message us on Instagram before 8pm, pick up the next day."]</em> Tell us what you want and when you want it, and we'll confirm a pickup time.</p>
+    <p>A proper online store is coming later at <strong>store.alinabun.com</strong>. For now, a message is the fastest way.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="closing">
+    <h2>Hungry?</h2>
+    <p>All the links — Instagram, TikTok, Facebook — live in one place.</p>
+    <a class="btn" href="https://links.alinabun.com">Find us</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>© <span id="yr">2026</span> Alina Bun</span>
+    <span class="social">
+      <a href="https://www.instagram.com/alina.bun_/">Instagram</a>
+      <a href="https://www.tiktok.com/@alina.bun_">TikTok</a>
+      <a href="https://www.facebook.com/share/1CqeotLEx9/">Facebook</a>
+    </span>
+  </footer>
+</div>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
