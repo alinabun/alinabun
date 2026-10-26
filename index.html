@@ -1,257 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alina Bun — Fresh buns, baked to order</title>
-<meta name="description" content="A small home bakery making tuna, cream, chocolate and sausage buns fresh to order. This is the story behind Alina Bun.">
-<meta name="theme-color" content="#F4EEE1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alina Bun · Softest bun you will ever touch</title>
+<meta name="description" content="Soft, golden buns made by hand in Malé, the morning you get them. Pre-order the day before, and we bring them to your door or your boat. Or pick them up.">
+<meta name="theme-color" content="#3B2417">
 <link rel="canonical" href="https://alinabun.com/">
-
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alina Bun">
-<meta property="og:description" content="Fresh buns, baked to order.">
+<meta property="og:site_name" content="Alina Bun">
+<meta property="og:title" content="Alina Bun · Softest bun you will ever touch">
+<meta property="og:description" content="Soft, golden buns made by hand in Malé, the morning you get them.">
 <meta property="og:url" content="https://alinabun.com/">
-<meta property="og:image" content="https://alinabun.com/assets/og.png">
+<meta property="og:image" content="https://alinabun.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tuna, cream and chocolate buns on boards and a plate">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preload" as="image" href="assets/video/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="https://vosokllmaifbcdfbfvdt.supabase.co" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,100;1,9..144,400..600,100&family=Inter:wght@400..700&display=swap">
 <link rel="stylesheet" href="brand/tokens.css">
-<style>
-/* Fallback copy of brand/tokens.css. Keeps the page on-brand even if the
-   external stylesheet fails to load. Mirrors brand/tokens.css — if you
-   change a value there, change it here too. */
-:root{
-  --milk-bun:#F4EEE1; --warm-glaze:#D9C1A0; --golden-crust:#BD8145;
-  --toasted-crumb:#8C6A4B; --dark-roast:#3B2417; --white:#FFFFFF;
-  --bg:var(--milk-bun); --bg-inverse:var(--dark-roast);
-  --text:var(--dark-roast); --text-muted:var(--toasted-crumb);
-  --text-inverse:var(--milk-bun); --accent:var(--golden-crust);
-  --border:rgba(59,36,23,.08); --border-strong:rgba(59,36,23,.16);
-  --font-display:'Fraunces',Georgia,serif;
-  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --radius-sm:9px; --radius-md:14px; --radius-lg:20px; --radius-pill:999px;
-  --shadow-sm:0 1px 2px rgba(59,36,23,.06);
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
-body{
-  margin:0; background:var(--bg); color:var(--text);
-  font-family:var(--font-body); line-height:1.65; font-size:16.5px;
-}
-.wrap{max-width:760px; margin:0 auto; padding:0 24px}
-a{color:var(--text)}
-
-/* ── Nav ────────────────────────────────────────────────────────── */
-nav{
-  position:sticky; top:0; z-index:10;
-  background:rgba(244,238,225,.88);
-  backdrop-filter:saturate(180%) blur(12px);
-  -webkit-backdrop-filter:saturate(180%) blur(12px);
-  border-bottom:1px solid var(--border);
-}
-nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
-nav .brand{
-  font-family:var(--font-display); font-weight:600; font-size:19px;
-  text-decoration:none; letter-spacing:-.01em;
-}
-nav .nav-links{display:flex; gap:22px; align-items:center}
-nav .nav-links a{
-  font-size:14.5px; color:var(--text-muted); text-decoration:none; font-weight:500;
-}
-nav .nav-links a:hover{color:var(--text)}
-nav .nav-links a.cta{
-  background:var(--accent); color:var(--white);
-  padding:8px 15px; border-radius:var(--radius-sm); font-weight:600;
-}
-@media(max-width:520px){ nav .nav-links a.hide-sm{display:none} }
-
-/* ── Hero ───────────────────────────────────────────────────────── */
-.hero{
-  padding:88px 0 72px; text-align:center;
-  background-image:radial-gradient(ellipse 100% 70% at 50% 0%, rgba(217,193,160,.6), transparent 72%);
-}
-.hero .eyebrow{
-  font-size:13px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--toasted-crumb); margin:0 0 18px; font-weight:600;
-}
-.hero h1{
-  font-family:var(--font-display); font-optical-sizing:auto; font-weight:600;
-  font-size:clamp(38px,7vw,62px); line-height:1.08; letter-spacing:-.02em;
-  margin:0 0 20px;
-}
-.hero .lede{
-  font-size:18.5px; color:var(--text-muted);
-  max-width:480px; margin:0 auto 34px;
-}
-.btn{
-  display:inline-block; background:var(--accent); color:var(--white);
-  font-weight:600; font-size:15.5px; padding:13px 26px;
-  border-radius:var(--radius-sm); text-decoration:none;
-  box-shadow:0 2px 12px rgba(189,129,69,.26);
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-.btn:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(189,129,69,.32)}
-.btn-ghost{
-  display:inline-block; margin-left:10px; padding:12px 22px;
-  border:1.5px solid var(--border-strong); border-radius:var(--radius-sm);
-  color:var(--text); text-decoration:none; font-weight:500; font-size:15.5px;
-}
-.btn-ghost:hover{border-color:var(--toasted-crumb)}
-
-/* ── Sections ───────────────────────────────────────────────────── */
-section{padding:72px 0}
-section + section{border-top:1px solid var(--border)}
-h2{
-  font-family:var(--font-display); font-weight:600;
-  font-size:clamp(26px,4vw,34px); letter-spacing:-.01em;
-  margin:0 0 16px;
-}
-section p{margin:0 0 18px; color:var(--text-muted)}
-section p.body{color:var(--text)}
-.story p{font-size:17px}
-.story p:first-of-type::first-letter{
-  font-family:var(--font-display); font-size:56px; font-weight:600;
-  float:left; line-height:.82; margin:6px 10px 0 0; color:var(--accent);
-}
-
-/* ── Menu grid ──────────────────────────────────────────────────── */
-.menu-grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:16px; margin-top:28px;
-}
-.bun{
-  background:var(--white); border:1px solid var(--border);
-  border-radius:var(--radius-md); padding:20px;
-  box-shadow:var(--shadow-sm);
-}
-.bun .dot{
-  width:34px; height:34px; border-radius:var(--radius-pill);
-  margin-bottom:12px; border:1px solid var(--border);
-}
-.bun h3{font-family:var(--font-display); font-weight:500; font-size:18px; margin:0 0 4px}
-.bun p{font-size:13.5px; margin:0; color:var(--text-muted)}
-
-/* ── Closing CTA ────────────────────────────────────────────────── */
-.closing{
-  background:var(--bg-inverse); color:var(--text-inverse);
-  border-radius:var(--radius-lg); padding:52px 40px; text-align:center;
-  margin:0 0 72px;
-}
-.closing h2{color:var(--text-inverse); margin-bottom:12px}
-.closing p{color:var(--warm-glaze); max-width:420px; margin:0 auto 26px}
-
-footer{
-  border-top:1px solid var(--border);
-  padding:32px 0 48px; font-size:13.5px; color:var(--text-muted);
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
-}
-footer a{color:var(--text-muted); text-decoration:none}
-footer a:hover{color:var(--text)}
-footer .social{display:flex; gap:18px}
-
-@media (prefers-reduced-motion:reduce){ *{transition:none!important; scroll-behavior:auto} }
-</style>
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Bakery", "name": "Alina Bun", "url": "https://alinabun.com/",
+ "image": "https://alinabun.com/assets/og.jpg", "slogan": "Softest bun you will ever touch",
+ "address": {"@type": "PostalAddress", "addressLocality": "Malé", "addressCountry": "MV"},
+ "areaServed": "Malé, Maldives", "hasMenu": "https://store.alinabun.com/",
+ "sameAs": ["https://www.tiktok.com/@alina.bun_", "https://www.facebook.com/share/1CqeotLEx9/"]}
+</script>
 </head>
 <body>
+<a class="skip" href="#buns">Skip to the buns</a>
 
-<nav>
-  <div class="wrap">
-    <a class="brand" href="/">Alina Bun</a>
-    <div class="nav-links">
-      <a class="hide-sm" href="#story">Story</a>
-      <a class="hide-sm" href="#menu">Buns</a>
-      <a class="cta" href="https://links.alinabun.com">Order</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Home bakery</p>
-    <h1>Fresh buns,<br>baked to order.</h1>
-    <p class="lede">Small batches, made the morning you get them. No shelf, no preservatives — just the oven and a short drive.</p>
-    <a class="btn" href="https://links.alinabun.com">Order a box</a>
-    <a class="btn-ghost" href="#menu">See the buns</a>
-  </div>
+<header class="nav" data-nav>
+  <a class="brand" href="/"><img src="assets/favicon.svg" alt="" width="30" height="30">Alina Bun</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#buns">The buns</a><a href="#kitchen">Kitchen</a><a href="#islands">Islands</a><a href="#order">How to order</a>
+  </nav>
+  <a class="btn" href="https://store.alinabun.com/">Order</a>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     TODO: Replace the placeholder prose below with the real story.
-     Keep the structure — it's paced for a reader who just scanned
-     a QR code and has about 40 seconds of attention.
-     ═══════════════════════════════════════════════════════════════ -->
-
-<section class="story" id="story">
-  <div class="wrap">
-    <h2>How it started</h2>
-    <p>Every good bakery starts the same way — somebody made something for the people around them, and those people kept asking for more. That's the shape of this one too.</p>
-    <p><em>[Replace: where Alina learned to bake, what the first bun was, who asked for the second one.]</em></p>
-    <p><em>[Replace: the turn — the moment it stopped being a kitchen thing and started being a real thing worth naming.]</em></p>
-  </div>
-</section>
-
-<section id="menu">
-  <div class="wrap">
-    <h2>What comes out of the oven</h2>
-    <p>Five fillings, made in rotation. Not everything is available every day — the current list is always on the socials.</p>
-    <div class="menu-grid">
-      <div class="bun">
-        <div class="dot" style="background:#D9C1A0"></div>
-        <h3>Cream</h3><p>Soft, sweet, the bestseller.</p>
-      </div>
-      <div class="bun">
-        <div class="dot" style="background:#8C6A4B"></div>
-        <h3>Chocolate</h3><p>Rich centre, still warm if you're quick.</p>
-      </div>
-      <div class="bun">
-        <div class="dot" style="background:#BD8145"></div>
-        <h3>Tuna</h3><p>Savoury, seasoned, properly filled.</p>
-      </div>
-      <div class="bun">
-        <div class="dot" style="background:#3B2417"></div>
-        <h3>Sausage</h3><p>The one that disappears first at parties.</p>
-      </div>
-      <div class="bun">
-        <div class="dot" style="background:linear-gradient(135deg,#D9C1A0,#BD8145)"></div>
-        <h3>Blend</h3><p>A mixed box — a bit of everything.</p>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <video data-hero muted loop playsinline preload="none" poster="assets/video/hero.jpg" width="720" height="1280">
+        <source src="assets/video/hero-sm.mp4" type="video/mp4" media="(max-width: 640px)">
+        <source src="assets/video/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-floats" aria-hidden="true">
+      <picture><source type="image/avif" srcset="assets/img/cut-chocolate-400.avif 400w, assets/img/cut-chocolate-800.avif 800w" sizes="200px"><img class="f1" src="assets/img/cut-chocolate-800.webp" srcset="assets/img/cut-chocolate-400.webp 400w, assets/img/cut-chocolate-800.webp 800w" sizes="200px" width="800" height="800" alt="" loading="lazy" decoding="async"></picture>
+      <picture><source type="image/avif" srcset="assets/img/cut-cream-400.avif 400w, assets/img/cut-cream-800.avif 800w" sizes="170px"><img class="f2" src="assets/img/cut-cream-800.webp" srcset="assets/img/cut-cream-400.webp 400w, assets/img/cut-cream-800.webp 800w" sizes="170px" width="800" height="800" alt="" loading="lazy" decoding="async"></picture>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow light hero-fade">Home bakery · Malé, Maldives</p>
+      <h1 id="hero-title">
+        <span class="line"><span style="--i:0">Softest bun</span></span>
+        <span class="line"><span style="--i:1">you will</span></span>
+        <span class="line"><span style="--i:2"><em>ever touch.</em></span></span>
+      </h1>
+      <p class="lede hero-fade">Golden buns made by hand, the morning you get them. Boxed one by one and brought to your door, or your boat.</p>
+      <p class="live light hero-fade" data-live hidden><span class="dot" aria-hidden="true"></span><span data-live-text></span></p>
+      <div class="btn-row hero-fade">
+        <a class="btn btn-light" href="https://store.alinabun.com/">Order buns <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost light" href="#buns">Meet the buns</a>
       </div>
     </div>
-  </div>
-</section>
+    <a class="scroll-cue" href="#buns" aria-label="Scroll to the buns"></a>
+  </section>
 
-<section>
+  <div class="band" aria-hidden="true">
+    <div class="band-track">
+      <span>Softest bun you will ever touch</span><span>Made by hand in Malé</span><span>Boxed one by one</span><span>To your door, or your boat</span>
+      <span>Softest bun you will ever touch</span><span>Made by hand in Malé</span><span>Boxed one by one</span><span>To your door, or your boat</span>
+    </div>
+  </div>
+
+  <section class="section" id="buns" aria-labelledby="buns-title">
+    <div class="wrap">
+      <div class="section-head">
+        <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="ring" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/></defs>
+          <text><textPath href="#ring">Tap a bun · give it a squish · </textPath></text>
+          <circle cx="60" cy="60" r="20" fill="currentColor" opacity=".12"/>
+          <path d="M48 62c3-9 21-9 24 0M50 58c2-4 6-6 10-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <p class="eyebrow">On the tray</p>
+        <h2 id="buns-title">Meet the <em>buns.</em></h2>
+        <p class="lede">Every one is shaped, glazed and boxed by hand. Go on, tap one. They really are that soft.</p>
+      </div>
+      <div class="bun-list" data-bun-list>
+      <article class="bun reveal" data-bun="tuna" data-tone="glaze">
+        <div class="bun-stage">
+          <div class="plate" aria-hidden="true"></div>
+          <button class="bun-touch" type="button" aria-label="Give the tuna bun a squish"><span class="bun-spin"><span class="bun-squish"><picture><source type="image/avif" srcset="assets/img/cut-tuna-400.avif 400w, assets/img/cut-tuna-800.avif 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw"><img src="assets/img/cut-tuna-800.webp" srcset="assets/img/cut-tuna-400.webp 400w, assets/img/cut-tuna-800.webp 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw" width="800" height="800" alt="A golden tuna bun, flecked with chilli" loading="lazy" decoding="async"></picture></span></span></button>
+          <p class="tap-hint" aria-hidden="true">tap me<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 8c14 0 24 8 26 24"/><path d="M26 27l6 6 3-8"/></svg></p>
+        </div>
+        <h3>Tuna</h3>
+        <p class="bun-desc">Savoury, seasoned and properly filled, under a glossy glaze flecked with chilli.</p>
+        <p class="bun-meta"></p>
+        <div class="bun-photos">
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/box-tuna-hand-2-1600.avif" data-zoom-jpg="assets/img/box-tuna-hand-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/box-tuna-hand-2-480.avif 480w, assets/img/box-tuna-hand-2-960.avif 960w, assets/img/box-tuna-hand-2-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/box-tuna-hand-2-960.jpg" width="960" height="1280" alt="A glazed tuna bun in its clear box" loading="lazy" decoding="async"></picture></button>
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/ixora-tuna-1600.avif" data-zoom-jpg="assets/img/ixora-tuna-960.jpg"><picture><source type="image/avif" srcset="assets/img/ixora-tuna-480.avif 480w, assets/img/ixora-tuna-960.avif 960w, assets/img/ixora-tuna-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/ixora-tuna-960.jpg" width="960" height="1280" alt="A tuna bun in its box in front of red ixora flowers" loading="lazy" decoding="async"></picture></button>
+        </div>
+      </article>
+      <article class="bun reveal" data-bun="cream" data-tone="white">
+        <div class="bun-stage">
+          <div class="plate" aria-hidden="true"></div>
+          <button class="bun-touch" type="button" aria-label="Give the cream bun a squish"><span class="bun-spin"><span class="bun-squish"><picture><source type="image/avif" srcset="assets/img/cut-cream-400.avif 400w, assets/img/cut-cream-800.avif 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw"><img src="assets/img/cut-cream-800.webp" srcset="assets/img/cut-cream-400.webp 400w, assets/img/cut-cream-800.webp 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw" width="800" height="800" alt="A cream bun with a golden swirl on top" loading="lazy" decoding="async"></picture></span></span></button>
+          
+        </div>
+        <h3>Cream</h3>
+        <p class="bun-desc">Soft and sweet, with a golden swirl baked into the top.</p>
+        <p class="bun-meta"></p>
+        <div class="bun-photos">
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/cream-plate-1600.avif" data-zoom-jpg="assets/img/cream-plate-960.jpg"><picture><source type="image/avif" srcset="assets/img/cream-plate-480.avif 480w, assets/img/cream-plate-960.avif 960w, assets/img/cream-plate-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/cream-plate-960.jpg" width="960" height="1280" alt="Cream buns with golden swirls on a plate" loading="lazy" decoding="async"></picture></button>
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/flowers-cream-1600.avif" data-zoom-jpg="assets/img/flowers-cream-960.jpg"><picture><source type="image/avif" srcset="assets/img/flowers-cream-480.avif 480w, assets/img/flowers-cream-960.avif 960w, assets/img/flowers-cream-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/flowers-cream-960.jpg" width="960" height="1280" alt="A cream bun in its box, in front of pink bougainvillea" loading="lazy" decoding="async"></picture></button>
+        </div>
+      </article>
+      <article class="bun reveal" data-bun="sesame" data-tone="glaze">
+        <div class="bun-stage">
+          <div class="plate" aria-hidden="true"></div>
+          <div class="bun-photo"><picture><source type="image/avif" srcset="assets/img/sesame-top-480.avif 480w, assets/img/sesame-top-960.avif 960w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 34vw, 70vw"><img src="assets/img/sesame-top-960.jpg" width="960" height="1088" alt="Five sesame knot buns on a cream plate" loading="lazy" decoding="async"></picture></div>
+          
+        </div>
+        <h3>Sesame</h3>
+        <p class="bun-desc">A soft knot of dough, glazed and scattered with sesame.</p>
+        <p class="bun-meta"></p>
+        <div class="bun-photos">
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/sesame-plate-1600.avif" data-zoom-jpg="assets/img/sesame-plate-960.jpg"><picture><source type="image/avif" srcset="assets/img/sesame-plate-480.avif 480w, assets/img/sesame-plate-960.avif 960w, assets/img/sesame-plate-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/sesame-plate-960.jpg" width="960" height="1280" alt="Sesame knot buns on a plate in the sun" loading="lazy" decoding="async"></picture></button>
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/sesame-window-1600.avif" data-zoom-jpg="assets/img/sesame-window-960.jpg"><picture><source type="image/avif" srcset="assets/img/sesame-window-480.avif 480w, assets/img/sesame-window-960.avif 960w, assets/img/sesame-window-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/sesame-window-960.jpg" width="960" height="1280" alt="A plate of sesame knot buns by a sunny window" loading="lazy" decoding="async"></picture></button>
+        </div>
+      </article>
+      <article class="bun reveal" data-bun="chocolate" data-tone="dark">
+        <div class="bun-stage">
+          <div class="plate" aria-hidden="true"></div>
+          <button class="bun-touch" type="button" aria-label="Give the chocolate bun a squish"><span class="bun-spin"><span class="bun-squish"><picture><source type="image/avif" srcset="assets/img/cut-chocolate-400.avif 400w, assets/img/cut-chocolate-800.avif 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw"><img src="assets/img/cut-chocolate-800.webp" srcset="assets/img/cut-chocolate-400.webp 400w, assets/img/cut-chocolate-800.webp 800w" sizes="(min-width: 1180px) 220px, (min-width: 720px) 32vw, 64vw" width="800" height="800" alt="A chocolate bun with a chocolate lattice on top" loading="lazy" decoding="async"></picture></span></span></button>
+          
+        </div>
+        <h3>Chocolate</h3>
+        <p class="bun-desc">Criss-crossed with chocolate on top, and chocolate all the way through.</p>
+        <p class="bun-meta"></p>
+        <div class="bun-photos">
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/chocolate-plate-1600.avif" data-zoom-jpg="assets/img/chocolate-plate-960.jpg"><picture><source type="image/avif" srcset="assets/img/chocolate-plate-480.avif 480w, assets/img/chocolate-plate-960.avif 960w, assets/img/chocolate-plate-1600.avif 1600w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/chocolate-plate-960.jpg" width="960" height="1280" alt="Chocolate lattice buns on a plate" loading="lazy" decoding="async"></picture></button>
+          <button class="zoom ar-45" type="button" data-zoom="assets/img/box-chocolate-hand-960.avif" data-zoom-jpg="assets/img/box-chocolate-hand-960.jpg"><picture><source type="image/avif" srcset="assets/img/box-chocolate-hand-480.avif 480w, assets/img/box-chocolate-hand-960.avif 960w" sizes="(min-width: 1180px) 140px, (min-width: 720px) 22vw, 44vw"><img src="assets/img/box-chocolate-hand-960.jpg" width="960" height="1325" alt="A chocolate bun in its box, held up close" loading="lazy" decoding="async"></picture></button>
+        </div>
+      </article>
+      </div>
+      <template id="bun-template">
+        <article class="bun reveal is-in" data-tone="white">
+          <div class="bun-stage"><div class="plate" aria-hidden="true"></div><div class="bun-photo"><img alt="" loading="lazy" decoding="async"></div></div>
+          <h3></h3>
+          <p class="bun-desc">Fresh from the oven, made by hand.</p>
+          <p class="bun-meta"></p>
+        </article>
+      </template>
+    </div>
+  </section>
+
+  <section class="feature" aria-labelledby="inside-title">
+    <button class="zoom " type="button" data-zoom="assets/img/chocolate-inside-960.avif" data-zoom-jpg="assets/img/chocolate-inside-960.jpg"><picture><source type="image/avif" srcset="assets/img/chocolate-inside-480.avif 480w, assets/img/chocolate-inside-960.avif 960w" sizes="100vw"><img src="assets/img/chocolate-inside-960.jpg" width="960" height="890" alt="A chocolate bun torn open, filled with chocolate" loading="lazy" decoding="async"></picture></button>
+    <div class="feature-copy">
+      <p class="eyebrow light">The chocolate one</p>
+      <h2 id="inside-title" class="reveal">All the way <em>through.</em></h2>
+      <p class="reveal" style="--d:1">Tear one open and see for yourself.</p>
+    </div>
+  </section>
+
+  <section class="section sheet inverse" id="kitchen" aria-labelledby="kitchen-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">In the kitchen</p>
+        <h2 id="kitchen-title">Made by hand, <em>start to finish.</em></h2>
+        <p class="lede">From the first ball of dough to the last sealed box, it all happens in our kitchen in Malé.</p>
+      </div>
+      <ol class="steps" role="list">
+        <li class="step reveal">
+          <div class="step-media">
+            <div class="clip"><video data-lazy muted loop playsinline preload="none" poster="assets/video/shaping.jpg" aria-hidden="true"><source data-src="assets/video/shaping.mp4" type="video/mp4"></video></div>
+            <div class="polaroid"><button class="zoom " type="button" data-zoom="assets/img/dough-twists-1600.avif" data-zoom-jpg="assets/img/dough-twists-960.jpg"><picture><source type="image/avif" srcset="assets/img/dough-twists-480.avif 480w, assets/img/dough-twists-960.avif 960w, assets/img/dough-twists-1600.avif 1600w" sizes="40vw"><img src="assets/img/dough-twists-960.jpg" width="960" height="1280" alt="Two twisted knots of dough on baking paper" loading="lazy" decoding="async"></picture></button></div>
+          </div>
+          <div><p class="step-num">01</p><h3>Shaped one at a time</h3><p>Every bun is rolled, swirled or knotted by hand. No machines, no shortcuts.</p></div>
+        </li>
+        <li class="step reveal">
+          <div class="step-media">
+            <div class="clip"><video data-lazy muted loop playsinline preload="none" poster="assets/video/glazing.jpg" aria-hidden="true"><source data-src="assets/video/glazing.mp4" type="video/mp4"></video></div>
+            <div class="polaroid"><button class="zoom " type="button" data-zoom="assets/img/trays-960.avif" data-zoom-jpg="assets/img/trays-960.jpg"><picture><source type="image/avif" srcset="assets/img/trays-480.avif 480w, assets/img/trays-960.avif 960w" sizes="40vw"><img src="assets/img/trays-960.jpg" width="960" height="1147" alt="Trays of glazed buns ready for the oven" loading="lazy" decoding="async"></picture></button></div>
+          </div>
+          <div><p class="step-num">02</p><h3>Glazed and criss-crossed</h3><p>A glossy glaze, a swirl, a chocolate lattice. Then a little rest before the oven.</p></div>
+        </li>
+        <li class="step reveal">
+          <div class="step-media"><button class="zoom " type="button" data-zoom="assets/img/oven-1600.avif" data-zoom-jpg="assets/img/oven-960.jpg"><picture><source type="image/avif" srcset="assets/img/oven-480.avif 480w, assets/img/oven-960.avif 960w, assets/img/oven-1600.avif 1600w" sizes="(min-width: 900px) 520px, 90vw"><img src="assets/img/oven-960.jpg" width="960" height="1280" alt="Buns baking in the oven" loading="lazy" decoding="async"></picture></button></div>
+          <div><p class="step-num">03</p><h3>Baked golden</h3><p>Out of the oven the morning you get them. That's the whole secret.</p></div>
+        </li>
+        <li class="step reveal">
+          <div class="step-media">
+            <div class="clip"><video data-lazy muted loop playsinline preload="none" poster="assets/video/packing.jpg" aria-hidden="true"><source data-src="assets/video/packing.mp4" type="video/mp4"></video></div>
+            <div class="polaroid"><button class="zoom " type="button" data-zoom="assets/img/packing-2-960.avif" data-zoom-jpg="assets/img/packing-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/packing-2-480.avif 480w, assets/img/packing-2-960.avif 960w" sizes="40vw"><img src="assets/img/packing-2-960.jpg" width="960" height="1139" alt="Hands packing buns into their boxes" loading="lazy" decoding="async"></picture></button></div>
+          </div>
+          <div><p class="step-num">04</p><h3>Boxed and sealed</h3><p>Each bun gets its own clear box and our label, so it arrives looking the way it left.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section sheet" id="boxes" aria-labelledby="boxes-title" style="background-color: var(--milk-bun)">
+    <div class="wrap boxes-top">
+      <div>
+        <p class="eyebrow">Boxed one by one</p>
+        <h2 id="boxes-title">Ready to give. <em>Or not.</em></h2>
+        <p class="lede">Every bun travels in its own clear box, with our label on top. The one that says:</p>
+        <p class="label-quote reveal">“Softest bun you will ever touch.”</p>
+      </div>
+      <button class="zoom boxes-lead reveal" type="button" data-zoom="assets/img/box-cream-hand-1600.avif" data-zoom-jpg="assets/img/box-cream-hand-960.jpg"><picture><source type="image/avif" srcset="assets/img/box-cream-hand-480.avif 480w, assets/img/box-cream-hand-960.avif 960w, assets/img/box-cream-hand-1600.avif 1600w" sizes="(min-width: 900px) 520px, 90vw"><img src="assets/img/box-cream-hand-960.jpg" width="960" height="1280" alt="A hand holding a cream bun in its clear box with the Alina Bun label" loading="lazy" decoding="async"></picture></button>
+    </div>
+    <div class="rail" data-rail aria-label="Boxed buns">
+      <figure><button class="zoom ar-45" type="button" data-zoom="assets/img/box-tuna-hand-1600.avif" data-zoom-jpg="assets/img/box-tuna-hand-960.jpg"><picture><source type="image/avif" srcset="assets/img/box-tuna-hand-480.avif 480w, assets/img/box-tuna-hand-960.avif 960w, assets/img/box-tuna-hand-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/box-tuna-hand-960.jpg" width="960" height="1280" alt="A tuna bun in its box, held over a plate of boxed buns" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/boxes-mixed-960.avif" data-zoom-jpg="assets/img/boxes-mixed-960.jpg"><picture><source type="image/avif" srcset="assets/img/boxes-mixed-480.avif 480w, assets/img/boxes-mixed-960.avif 960w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/boxes-mixed-960.jpg" width="960" height="979" alt="Boxed chocolate and cream buns with the Alina Bun label" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/boxes-plate-1600.avif" data-zoom-jpg="assets/img/boxes-plate-960.jpg"><picture><source type="image/avif" srcset="assets/img/boxes-plate-480.avif 480w, assets/img/boxes-plate-960.avif 960w, assets/img/boxes-plate-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/boxes-plate-960.jpg" width="960" height="1707" alt="Three boxed buns on a plate" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/boxes-plate-2-1600.avif" data-zoom-jpg="assets/img/boxes-plate-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/boxes-plate-2-480.avif 480w, assets/img/boxes-plate-2-960.avif 960w, assets/img/boxes-plate-2-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/boxes-plate-2-960.jpg" width="960" height="1280" alt="Boxed buns stacked on a plate, each with the Alina Bun label" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/boxes-chocolate-1600.avif" data-zoom-jpg="assets/img/boxes-chocolate-960.jpg"><picture><source type="image/avif" srcset="assets/img/boxes-chocolate-480.avif 480w, assets/img/boxes-chocolate-960.avif 960w, assets/img/boxes-chocolate-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/boxes-chocolate-960.jpg" width="960" height="1707" alt="Boxed chocolate and cream buns on a plate" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/boxes-cream-960.avif" data-zoom-jpg="assets/img/boxes-cream-960.jpg"><picture><source type="image/avif" srcset="assets/img/boxes-cream-480.avif 480w, assets/img/boxes-cream-960.avif 960w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/boxes-cream-960.jpg" width="960" height="661" alt="Three boxed cream buns" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-45" type="button" data-zoom="assets/img/packing-960.avif" data-zoom-jpg="assets/img/packing-960.jpg"><picture><source type="image/avif" srcset="assets/img/packing-480.avif 480w, assets/img/packing-960.avif 960w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/packing-960.jpg" width="960" height="1165" alt="Buns being packed into boxes, with stacks of boxes behind" loading="lazy" decoding="async"></picture></button></figure>
+    </div>
+    <div class="rail-bar" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="sheet inverse" id="islands" aria-labelledby="islands-title">
+    <div class="islands-hero">
+      <video data-lazy muted loop playsinline preload="none" poster="assets/video/beach.jpg" aria-hidden="true"><source data-src="assets/video/beach.mp4" type="video/mp4"></video>
+      <div class="islands-copy">
+        <p class="eyebrow light">Malé &amp; beyond</p>
+        <h2 id="islands-title" class="reveal">Made for <em>island days.</em></h2>
+        <div class="boat-note reveal" style="--d:1">
+          <svg class="boat-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <g class="hull"><path d="M8 28h32l-5 8H13z"/><path d="M14 28v-7h14l5 7"/><path d="M19 21v-5h7"/></g>
+            <path class="wave" d="M2 41c4 0 4-2 8-2s4 2 8 2 4-2 8-2 4 2 8 2 4-2 8-2 4 2 8 2"/>
+          </svg>
+          <p><b>Ordering from an island?</b> We'll bring your buns to your boat while it's in Malé. Just pick your boat from the list when you order. Delivery anywhere in Malé is free; elsewhere it's <span data-fee>a small fee</span>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="islands-more">
+      <div class="rail" data-rail aria-label="Buns out in the Maldives">
+        <figure><button class="zoom ar-34" type="button" data-zoom="assets/img/beach-chocolate-1600.avif" data-zoom-jpg="assets/img/beach-chocolate-960.jpg"><picture><source type="image/avif" srcset="assets/img/beach-chocolate-480.avif 480w, assets/img/beach-chocolate-960.avif 960w, assets/img/beach-chocolate-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/beach-chocolate-960.jpg" width="960" height="1280" alt="A boxed chocolate bun held up on a Maldives beach" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/beach-cream-1600.avif" data-zoom-jpg="assets/img/beach-cream-960.jpg"><picture><source type="image/avif" srcset="assets/img/beach-cream-480.avif 480w, assets/img/beach-cream-960.avif 960w, assets/img/beach-cream-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/beach-cream-960.jpg" width="960" height="1280" alt="A boxed cream bun held up on the beach in the evening" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/flowers-label-1600.avif" data-zoom-jpg="assets/img/flowers-label-960.jpg"><picture><source type="image/avif" srcset="assets/img/flowers-label-480.avif 480w, assets/img/flowers-label-960.avif 960w, assets/img/flowers-label-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/flowers-label-960.jpg" width="960" height="1280" alt="A boxed cream bun with the Alina Bun label among bougainvillea" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/sea-cream-1600.avif" data-zoom-jpg="assets/img/sea-cream-960.jpg"><picture><source type="image/avif" srcset="assets/img/sea-cream-480.avif 480w, assets/img/sea-cream-960.avif 960w, assets/img/sea-cream-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/sea-cream-960.jpg" width="960" height="1280" alt="A cream bun held over the sea" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/flowers-cream-2-1600.avif" data-zoom-jpg="assets/img/flowers-cream-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/flowers-cream-2-480.avif 480w, assets/img/flowers-cream-2-960.avif 960w, assets/img/flowers-cream-2-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/flowers-cream-2-960.jpg" width="960" height="1280" alt="A cream bun in its box among pink bougainvillea" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/beach-chocolate-2-1600.avif" data-zoom-jpg="assets/img/beach-chocolate-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/beach-chocolate-2-480.avif 480w, assets/img/beach-chocolate-2-960.avif 960w, assets/img/beach-chocolate-2-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/beach-chocolate-2-960.jpg" width="960" height="1280" alt="A boxed chocolate bun on the beach, with the sea behind" loading="lazy" decoding="async"></picture></button></figure><figure><button class="zoom ar-34" type="button" data-zoom="assets/img/flowers-cream-3-1600.avif" data-zoom-jpg="assets/img/flowers-cream-3-960.jpg"><picture><source type="image/avif" srcset="assets/img/flowers-cream-3-480.avif 480w, assets/img/flowers-cream-3-960.avif 960w, assets/img/flowers-cream-3-1600.avif 1600w" sizes="(min-width: 1100px) 300px, (min-width: 720px) 40vw, 74vw"><img src="assets/img/flowers-cream-3-960.jpg" width="960" height="1280" alt="A cream bun held up in front of bougainvillea" loading="lazy" decoding="async"></picture></button></figure>
+      </div>
+      <div class="rail-bar" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <section class="section" id="order" aria-labelledby="order-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 id="order-title">Ordering takes <em>a minute.</em></h2>
+      </div>
+      <ol class="order-steps" role="list">
+        <li class="order-step reveal">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="24" height="22" rx="5"/><path d="M4 13h24M11 3v6M21 3v6"/><path d="M16 18v4l3 2"/></svg></span>
+          <div><h3>Pick a day</h3><p>Pre-order <b data-cutoff>by the evening before</b>. Missed it? On the day, grab the extras while they last.</p></div>
+        </li>
+        <li class="order-step reveal" style="--d:1">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h22l-4 6H9z"/><path d="M10 20v-6h10l4 6"/><path d="M14 14v-4h5"/><path d="M3 29c3 0 3-1.5 6.5-1.5S12.5 29 16 29s3-1.5 6.5-1.5S25.5 29 29 29"/></svg></span>
+          <div><h3>Delivery or pickup</h3><p>Free delivery anywhere in Malé, <b data-fee>a small fee</b> elsewhere, or straight to your boat. Pickup is always free.</p></div>
+        </li>
+        <li class="order-step reveal">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="9" height="9" rx="2"/><rect x="18" y="5" width="9" height="9" rx="2"/><rect x="5" y="18" width="9" height="9" rx="2"/><path d="M18 18h3v3h-3zM24 24h3v3h-3zM24 18h3M18 24v3"/></svg></span>
+          <div><h3>Pay and send the slip</h3><p>Bank transfer, or scan the QR with the BML app. Then upload a screenshot of your payment.</p></div>
+        </li>
+        <li class="order-step reveal" style="--d:1">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="18" rx="12" ry="9"/><path d="M8 16c3-5 13-5 16 0"/><path d="M12 7l1.5 2M16 5v3M20 7l-1.5 2"/></svg></span>
+          <div><h3>That's it</h3><p>Your order is confirmed as soon as the bank shows your payment. We'll take it from there.</p></div>
+        </li>
+      </ol>
+      <div class="order-cta">
+        <a class="btn btn-dark" href="https://store.alinabun.com/">Start your order <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="live" data-live hidden><span class="dot" aria-hidden="true"></span><span data-live-text></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sheet" aria-labelledby="wall-title" style="background-color: var(--white); padding-top: clamp(84px, 13vw, 156px)">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">From our kitchen</p>
+        <h2 id="wall-title">A few more, <em>because they're pretty.</em></h2>
+        <p class="lede">Tap any photo to see it bigger.</p>
+      </div>
+      <div class="wall">
+        <button class="zoom reveal" type="button" data-zoom="assets/img/flatlay-all-1600.avif" data-zoom-jpg="assets/img/flatlay-all-960.jpg"><picture><source type="image/avif" srcset="assets/img/flatlay-all-480.avif 480w, assets/img/flatlay-all-960.avif 960w, assets/img/flatlay-all-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/flatlay-all-960.jpg" width="960" height="850" alt="Tuna, cream and chocolate buns on wooden boards and a plate, with tomatoes, chillies, flour and sugar on kraft paper" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/scene-cream-1600.avif" data-zoom-jpg="assets/img/scene-cream-960.jpg"><picture><source type="image/avif" srcset="assets/img/scene-cream-480.avif 480w, assets/img/scene-cream-960.avif 960w, assets/img/scene-cream-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/scene-cream-960.jpg" width="960" height="1707" alt="A cream bun with its golden swirl on a white plate, next to flour, sugar and tomatoes" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/sesame-sun-1600.avif" data-zoom-jpg="assets/img/sesame-sun-960.jpg"><picture><source type="image/avif" srcset="assets/img/sesame-sun-480.avif 480w, assets/img/sesame-sun-960.avif 960w, assets/img/sesame-sun-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/sesame-sun-960.jpg" width="960" height="1280" alt="Sesame knot buns casting long shadows on a plate" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/boards-all-960.avif" data-zoom-jpg="assets/img/boards-all-960.jpg"><picture><source type="image/avif" srcset="assets/img/boards-all-480.avif 480w, assets/img/boards-all-960.avif 960w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/boards-all-960.jpg" width="960" height="1956" alt="Tuna buns with chillies, chocolate buns and cream buns on wooden boards" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/scene-tuna-1600.avif" data-zoom-jpg="assets/img/scene-tuna-960.jpg"><picture><source type="image/avif" srcset="assets/img/scene-tuna-480.avif 480w, assets/img/scene-tuna-960.avif 960w, assets/img/scene-tuna-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/scene-tuna-960.jpg" width="960" height="1707" alt="A tuna bun alone on a white plate, with bowls of flour and sugar and fresh tomatoes" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/cream-top-960.avif" data-zoom-jpg="assets/img/cream-top-960.jpg"><picture><source type="image/avif" srcset="assets/img/cream-top-480.avif 480w, assets/img/cream-top-960.avif 960w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/cream-top-960.jpg" width="960" height="999" alt="Swirled cream buns from above, in the sun" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/flatlay-ingredients-1600.avif" data-zoom-jpg="assets/img/flatlay-ingredients-960.jpg"><picture><source type="image/avif" srcset="assets/img/flatlay-ingredients-480.avif 480w, assets/img/flatlay-ingredients-960.avif 960w, assets/img/flatlay-ingredients-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/flatlay-ingredients-960.jpg" width="960" height="1194" alt="Ingredients laid out on kraft paper: flour, sugar, eggs, tomatoes, potatoes, onions, ginger, chillies and curry leaves" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/buns-plate-960.avif" data-zoom-jpg="assets/img/buns-plate-960.jpg"><picture><source type="image/avif" srcset="assets/img/buns-plate-480.avif 480w, assets/img/buns-plate-960.avif 960w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/buns-plate-960.jpg" width="960" height="902" alt="Round golden buns on a plate" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/scene-chocolate-1600.avif" data-zoom-jpg="assets/img/scene-chocolate-960.jpg"><picture><source type="image/avif" srcset="assets/img/scene-chocolate-480.avif 480w, assets/img/scene-chocolate-960.avif 960w, assets/img/scene-chocolate-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/scene-chocolate-960.jpg" width="960" height="1707" alt="A chocolate bun with its chocolate lattice on a white plate, next to flour, sugar and tomatoes" loading="lazy" decoding="async"></picture></button><button class="zoom reveal" type="button" data-zoom="assets/img/cream-plate-2-1600.avif" data-zoom-jpg="assets/img/cream-plate-2-960.jpg"><picture><source type="image/avif" srcset="assets/img/cream-plate-2-480.avif 480w, assets/img/cream-plate-2-960.avif 960w, assets/img/cream-plate-2-1600.avif 1600w" sizes="(min-width: 1100px) 290px, (min-width: 720px) 31vw, 46vw"><img src="assets/img/cream-plate-2-960.jpg" width="960" height="1280" alt="A plate of swirled cream buns" loading="lazy" decoding="async"></picture></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta sheet" aria-labelledby="cta-title">
+    <h2 id="cta-title" class="reveal">Hungry?</h2>
+    <p data-live-cta>Fresh buns, made the morning you get them.</p>
+    <div class="btn-row">
+      <a class="btn btn-dark" href="https://store.alinabun.com/">Order buns <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" data-instagram href="https://links.alinabun.com" hidden>Message us on Instagram</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
   <div class="wrap">
-    <h2>How ordering works</h2>
-    <p class="body">Message us on Instagram before 8pm, pick up the next day. Tell us what you want and when you want it, and we'll confirm a pickup time.</p>
-    <p>A proper online store is coming later at <strong>store.alinabun.com</strong>. For now, a message is the fastest way.</p>
-  </div>
-</section>
-
-<div class="wrap">
-  <div class="closing">
-    <h2>Hungry?</h2>
-    <p>All the links — Instagram, TikTok, Facebook — live in one place.</p>
-    <a class="btn" href="https://links.alinabun.com">Find us</a>
-  </div>
-</div>
-
-<div class="wrap">
-  <footer>
-    <span>© <span id="yr">2026</span> Alina Bun</span>
-    <span class="social">
-      <a href="https://www.instagram.com/alina.bun_/">Instagram</a>
+    <a class="brand" href="/"><img src="assets/favicon.svg" alt="" width="30" height="30">Alina Bun</a>
+    <nav aria-label="Elsewhere">
+      <a href="https://store.alinabun.com/">Order online</a>
+      <a data-instagram href="https://links.alinabun.com" hidden>Instagram</a>
       <a href="https://www.tiktok.com/@alina.bun_">TikTok</a>
       <a href="https://www.facebook.com/share/1CqeotLEx9/">Facebook</a>
-    </span>
-  </footer>
+      <a href="https://links.alinabun.com">All our links</a>
+    </nav>
+    <p>© <span data-year>2026</span> Alina Bun · Malé, Maldives</p>
+  </div>
+</footer>
+
+<div class="dock" data-dock>
+  <p class="dock-text"><b data-dock-title>Fresh buns, made to order</b><span data-dock-sub>Order on our store</span></p>
+  <a class="btn" href="https://store.alinabun.com/">Order</a>
 </div>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<dialog class="lightbox" aria-label="Photos">
+  <div class="lb-track"></div>
+  <button class="lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button class="lb-nav lb-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <p class="lb-count" aria-live="polite"></p>
+</dialog>
+
+<script src="assets/site.js" defer></script>
 </body>
 </html>
