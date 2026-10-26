@@ -37,7 +37,7 @@ store.alinabun.com), so nothing here goes stale:
 - `/catalog`: which buns are on sale, their names, prices, descriptions and photos.
   Cards for buns not on sale are removed; a new bun gets a simple card.
 - `/delivery-dates`: the next order day, the cutoff hour, extras left today,
-  the delivery fee outside Malé and the Instagram handle.
+  the delivery fees in and outside Malé and the Instagram handle.
 
 Change those in the store admin, never in this repo. If the API can't be reached,
 the page still works: the live lines and Instagram links stay hidden and the text

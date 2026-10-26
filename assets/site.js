@@ -65,6 +65,7 @@
 
   function settings(d) {
     for (const el of $$("[data-cutoff]")) el.textContent = `by ${hourText(d.cutoff_hour)} the day before`;
+    if (d.delivery_fee_male_mvr) for (const el of $$("[data-fee-male]")) el.textContent = mvr(d.delivery_fee_male_mvr);
     if (d.delivery_fee_outside_male_mvr) for (const el of $$("[data-fee]")) el.textContent = mvr(d.delivery_fee_outside_male_mvr);
     if (d.instagram) {
       for (const a of $$("[data-instagram]")) {
