@@ -46,6 +46,10 @@ falls back to neutral wording ("by the evening before", "a small fee").
 On `localhost` the page calls a local copy of the store at `localhost:54321`
 instead; without one running you see the fallback.
 
+`assets/site.js` also sends what visitors do here to the store's own analytics (`POST /e`, the store admin's
+Visitors tab): anonymous, in small batches, never anything typed; the same tracker as the store and links.alinabun.com.
+The order buttons are told apart by `data-track`; links to other sites are counted by their host.
+
 ## Brand
 
 `brand/tokens.css` is the **single source of truth** for colour, type and

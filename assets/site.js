@@ -36,6 +36,88 @@
   };
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 
+  // ── Our own analytics: the store's POST /e, shown in the store's admin → Visitors (same tracker as the store's src/track.ts) ──
+  // Anonymous: a random id for this phone and one for the visit, as cookies on .alinabun.com, so alinabun.com,
+  // links.alinabun.com and the store count one visit together. Never anything typed. Phones that have opened the store's
+  // admin page aren't counted. Events go in small batches: a few seconds after the page opens, then at most every 30 s,
+  // and when the page is left. If the store can't be reached, nothing happens.
+  const track = (() => {
+    const END = `${API}/e`;
+    const DOMAIN = location.hostname.endsWith("alinabun.com") ? "; domain=alinabun.com; secure" : "";
+    const cookie = (k) => (document.cookie.match(new RegExp(`(?:^|; )${k}=([^;]+)`)) || [])[1];
+    const setCookie = (k, v, secs) => (document.cookie = `${k}=${v}; max-age=${secs}; path=/; samesite=lax${DOMAIN}`);
+    const uuid = () => crypto.randomUUID ? crypto.randomUUID()
+      : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+    if (cookie("ab_staff")) return () => {};
+    const fresh = !cookie("ab_v"), visitor = cookie("ab_v") || uuid(), queue = [];
+    let visit = "", cookies = true, landing = true, timer = 0, sent = false, errors = 0, shown = Date.now(), deepest = 0;
+    const flush = () => {
+      clearTimeout(timer);
+      timer = 0;
+      if (!queue.length) return;
+      sent = true;
+      const now = Date.now();
+      const body = JSON.stringify({ visitor, visit, events: queue.splice(0, 50).map(({ t, ...e }) => ({ ...e, a: now - t })) });
+      try {
+        if (!navigator.sendBeacon(END, body)) throw new Error("not queued");
+      } catch {
+        fetch(END, { method: "POST", body, keepalive: true, mode: "no-cors" }).catch(() => {});
+      }
+      if (queue.length) flush();
+    };
+    // The visit an event belongs to; a new one on the first page, or after 30 minutes without activity.
+    const current = () => {
+      const v = cookies ? cookie("ab_s") : visit;
+      if (v) return void (visit = v);
+      flush();
+      visit = uuid();
+      const q = new URLSearchParams(location.search);
+      let ref = "";
+      try {
+        if (landing) ref = ((u) => u.host + u.pathname)(new URL(document.referrer)).slice(0, 150); // never its query string
+      } catch { /* no referrer */ }
+      queue.push({ n: "visit", p: location.pathname, t: Date.now(),
+        x: { ref, q: landing ? q.get("s") || q.get("utm_source") || "" : "", lang: navigator.language, new: fresh && landing } });
+    };
+    const track = (n, x = {}) => {
+      try { // counting must never get in the way of the page
+        current();
+        landing = false;
+        queue.push({ n, p: location.pathname, t: Date.now(), x });
+        setCookie("ab_v", visitor, 400 * 86400);
+        setCookie("ab_s", visit, 1800);
+        if (cookies && cookie("ab_s") !== visit) cookies = false; // cookies blocked: this page keeps its visit in memory
+        if (!timer) timer = setTimeout(flush, sent ? 30e3 : 4e3);
+      } catch { /* lost, never in the way */ }
+    };
+    const depth = () => (deepest = Math.max(deepest, scrollY + innerHeight));
+    addEventListener("scroll", depth, { passive: true });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        shown = Date.now();
+        if (cookies && !cookie("ab_s")) track("page"); // back to a tab left open: a new visit
+        return;
+      }
+      if (!cookies || cookie("ab_s")) {
+        depth();
+        track("leave", { ms: Date.now() - shown, y: Math.min(100, Math.round((deepest / document.documentElement.scrollHeight) * 100)) });
+      }
+      flush();
+    });
+    addEventListener("pagehide", flush);
+    // Taps on anything marked data-track, and on links to other sites.
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest && e.target.closest("[data-track], a[href]");
+      const t = el && (el.dataset.track || (el.host && el.host !== location.host ? el.host : ""));
+      if (t) track("click", { t });
+    }, true);
+    const err = (m) => errors++ < 5 && track("error", { m: String(m).slice(0, 200) });
+    addEventListener("error", (e) => err(e.message));
+    addEventListener("unhandledrejection", (e) => err((e.reason && e.reason.message) || e.reason));
+    track("page");
+    return track;
+  })();
+
   // ── Live data ──
   let live = null; // { products, days }
 
