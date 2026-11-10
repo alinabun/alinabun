@@ -40,7 +40,7 @@ store.alinabun.com), so nothing here goes stale:
   the delivery fees in and outside Malé and the Instagram handle.
 
 Change those in the store admin, never in this repo. If the API can't be reached,
-the page still works: the live lines and Instagram links stay hidden and the text
+the page still works: the live lines stay hidden, Instagram links keep the handle in the HTML, and the text
 falls back to neutral wording ("by the evening before", "a small fee").
 
 On `localhost` the page calls a local copy of the store at `localhost:54321`
